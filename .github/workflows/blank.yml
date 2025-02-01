@@ -1,0 +1,24 @@
+name: API Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-newman:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run API Tests
+        run: newman run books.json -e environment.json --reporters cli,junit --reporter-junit-export results.xml
