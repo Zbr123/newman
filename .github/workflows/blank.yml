@@ -21,4 +21,4 @@ jobs:
         run: npm install -g newman
 
       - name: Run API Tests
-        run: newman run books.json -e environment.json --reporters cli,junit --reporter-junit-export results.xml
+        run: newman run books.json --reporters cli,junit --reporter-junit-export results.xml
